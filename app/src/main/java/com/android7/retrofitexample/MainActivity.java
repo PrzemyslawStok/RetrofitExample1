@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
         dataList.enqueue(new Callback<List<Data>>() {
             @Override
             public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
+                List<Data> data = response.body();
 
+                Toast.makeText(MainActivity.this,data.toString(),Toast.LENGTH_LONG).show();
             }
 
             @Override
