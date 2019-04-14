@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     GraphView mGraph;
 
     Button mReloadButton;
+    EditText mAedit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mReloadButton = findViewById(R.id.button);
+        mAedit = findViewById(R.id.editTextA);
 
         mReloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<List<Data>> dataSquareFunction = apiInterface.getSquareFunction(1,0,0);
+                Float A = Float.parseFloat(mAedit.getText().toString());
+
+                Call<List<Data>> dataSquareFunction = apiInterface.getSquareFunction(A,0,1);
 
                 dataSquareFunction.enqueue(new Callback<List<Data>>() {
                     @Override

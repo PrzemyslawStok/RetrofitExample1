@@ -17,7 +17,7 @@ class APIClient {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://springjava81-env.wcjedakhrn.us-west-2.elasticbeanstalk.com")
+                .baseUrl("http://spring1.us-east-1.elasticbeanstalk.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
